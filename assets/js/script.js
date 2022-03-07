@@ -10,7 +10,7 @@ const searchResult = document.querySelector("input");
 const searchBtn = document.querySelector(".magnifying");
 const infoBox = document.querySelector(".info");
 const webTitle = document.querySelector(".webTitle");
-const historyList = document.querySelector(".hisLis")
+const historyList = document.querySelector(".hisLis");
 
 const APIKey = "c9648bd67b02cb074a8cff7f4418e8ec";
 //variables for the api link
@@ -28,21 +28,18 @@ searchBtn.addEventListener("click", function () {
   nameOfCity.innerHTML = `Weather in ${searchResult.value}`;
   cityName.fetchCity();
   history(event, city);
-  //dynamic title that changes with the city 
+  //dynamic title that changes with the city
   webTitle.textContent = `${city} | My Weather `;
 });
 //saves whatever data is searched into an array in local storage
 function history(event, location) {
   event.preventDefault();
   let historyStorage = JSON.parse(localStorage.getItem("history")) || [];
-  console.log(historyStorage);
   historyStorage.push(location);
   localStorage.setItem("history", JSON.stringify(historyStorage));
 }
 
-
-
-//turns a city name into lat and lon for other function to read 
+//turns a city name into lat and lon for other function to read
 let cityName = {
   fetchCity: function () {
     let geoTranslate = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${APIKey}`;
@@ -62,7 +59,7 @@ let weather = {
       .then((response) => response.json())
       // adding data to page
       .then(function (data) {
-          //loops to create ul for each day 
+        //loops to create ul for each day
         let days = data.daily;
         for (let i = 0; i < 5; i++) {
           const ul = document.createElement("ul");
@@ -71,7 +68,7 @@ let weather = {
           const cloudsLi = document.createElement("li");
           cloudsLi.classList.add("clouds");
           cloudsLi.innerHTML = "Condition: " + days[i].weather[0].description;
-            //creates li for all of the data for each day
+          //creates li for all of the data for each day
           const temperatureHiLi = document.createElement("li");
           temperatureHiLi.classList.add("temperatureHi");
           temperatureHiLi.innerHTML =
@@ -93,7 +90,7 @@ let weather = {
           const UVILi = document.createElement("li");
           UVILi.classList.add("UVI");
           UVILi.innerHTML = "UV index: " + days[i].uvi;
-            //adds the newly made lists to the ul
+          //adds the newly made lists to the ul
           ul.append(
             cloudsLi,
             temperatureHiLi,
@@ -107,5 +104,4 @@ let weather = {
   },
 };
 
-document.getElementById('hisLis').innerHTML += localStorage.getItem('history')
-
+document.getElementById("hisLis").innerHTML += localStorage.getItem("history");

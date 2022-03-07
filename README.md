@@ -6,3 +6,4 @@ When I type in the city of my choice I should be given the weather<br> for the n
 2. If you want to view the weather for a city you already searched click on its name in history<br>
 #
 ![weather site](./images/Capture.PNG)
+# [Link to page](https://mwalbyy.github.io/Weather-site/)
