@@ -102,4 +102,10 @@ let weather = {
       });
   },
 };
-document.getElementById("hisLis").innerHTML += localStorage.getItem("history");
+let cityHistory = JSON.parse(localStorage.getItem('history'))
+for (let i = 0; i < cityHistory.length; i++) {
+  $('.historyStr').append("<h2 class='cities'>" + cityHistory[i] + "</h2>")
+  
+}
+
+// document.getElementById("hisLis").innerHTML += localStorage.getItem("history");
