@@ -19,9 +19,7 @@ let lon = "";
 let part = "";
 let city = "";
 
-function reset() {
-  infoBox.remove("noneLi");
-}
+
 searchBtn.addEventListener("click", function () {
   //gets value of what is typed in search-bar and
   city = searchResult.value;
@@ -61,6 +59,7 @@ let weather = {
       .then(function (data) {
         //loops to create ul for each day
         let days = data.daily;
+        infoBox.innerHTML = '';
         for (let i = 0; i < 5; i++) {
           const ul = document.createElement("ul");
           ul.classList.add("noneLi");
@@ -103,5 +102,4 @@ let weather = {
       });
   },
 };
-
 document.getElementById("hisLis").innerHTML += localStorage.getItem("history");
