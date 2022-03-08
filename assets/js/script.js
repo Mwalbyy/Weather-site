@@ -40,7 +40,7 @@ function history(event, location) {
 //turns a city name into lat and lon for other function to read
 let cityName = {
   fetchCity: function () {
-    let geoTranslate = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${APIKey}`;
+    let geoTranslate = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${APIKey}`;
     fetch(geoTranslate)
       .then((response) => response.json())
       .then((data) => {
